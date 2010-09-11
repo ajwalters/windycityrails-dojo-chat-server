@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   def track_user
     active_users = ActiveSupport::JSON.decode(RedisClient.redis.get("room:default:active_users").to_s) || []
 
-    active_users = active_users.select { |user| user["last_active"].to_f > 10.seconds.ago.to_f }
+    active_users = active_users.select { |user| user["last_active"].to_f > 60.seconds.ago.to_f }
 
     active_users.delete_if { |user| user["name"] == cookies[:username] }
     active_users << {:name => cookies[:username], :last_active => Time.now.to_f, :email => cookies[:email]}

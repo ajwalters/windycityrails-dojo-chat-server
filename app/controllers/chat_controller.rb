@@ -6,6 +6,7 @@ class ChatController < ApplicationController
     track_user # Defined in app controller
     @recent_messages = (RedisClient.redis.zrevrange("room:default", 0, 30) || []).map { |message_json| ActiveSupport::JSON.decode(message_json) }
     @users = ActiveSupport::JSON.decode(RedisClient.redis.get("room:default:active_users").to_s) || []
+    @users = @users.sort_by { |u| u["name"] }
   end
 
   def sign_in
