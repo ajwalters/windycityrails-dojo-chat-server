@@ -14,13 +14,13 @@ describe Message do
       email = 'ryan@kinderman.net',
       message = 'profound message')
 
-    Message.find_last.should == {
-      :username => username,
-      :email => email,
-      :message => message,
-      :time_stamp => now.to_f * 1000,
-      :posted_at => "13:15:30"
-    }.to_json
+    ActiveSupport::JSON.decode(Message.find_last).should == {
+      'username' => username,
+      'email' => email,
+      'message' => message,
+      'time_stamp' => now.to_f * 1000,
+      'posted_at' => "13:15:30"
+    }
   end
 
   private
