@@ -1,1 +1,1 @@
-rvm use ree@wcr --create
+rvm use 1.9.2-patched@wcr --create --install

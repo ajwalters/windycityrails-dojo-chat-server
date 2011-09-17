@@ -2,8 +2,13 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.0'
 gem 'redis', '2.0.5'
-gem 'SystemTimer'
-gem "ruby-debug"
+platform :ruby_18 do
+  gem "SystemTimer"
+  gem "ruby-debug"
+end
+platform :ruby_19 do
+  gem "ruby-debug19"
+end
 gem "thin"
 
 group :test, :development do
