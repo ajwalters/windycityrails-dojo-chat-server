@@ -9,6 +9,7 @@ gem "thin"
 group :test, :development do
   gem "rspec-rails", ">= 2.0.0.beta.20"
   gem "webrat", "0.7.1"
+  gem "wirble"
 end
 
 group :bot do
