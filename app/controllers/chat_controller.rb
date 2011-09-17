@@ -16,6 +16,12 @@ class ChatController < ApplicationController
     redirect_to :action => :index
   end
 
+  def sign_out
+    cookies.delete :username
+    cookies.delete :email
+    redirect_to :action => :sign_in_form
+  end
+
   def push
     user = cookies[:username] || params[:username] || "Anon"
     email = params[:email] || cookies[:email] || "none@none.com"
@@ -26,7 +32,7 @@ class ChatController < ApplicationController
   def pull
     track_user
     messages = if params[:last_sync].to_i == 0
-      []
+    []
     else
       delta = RedisClient.redis.zrangebyscore 'room:default', params[:last_sync].to_f + 0.01, '+inf' 
       delta.map do |message_json|
@@ -36,7 +42,7 @@ class ChatController < ApplicationController
         message_params
       end
     end
-    
+
     render :json => {:time => Time.now.to_f * 1000, :delta => messages}
   end
 
