@@ -1,2 +1,1 @@
-rvm use ree@wcr
-rvm default ree
+rvm use ree@wcr --create
