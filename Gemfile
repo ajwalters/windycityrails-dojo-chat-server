@@ -4,6 +4,7 @@ gem 'rails', '3.0.0'
 gem 'redis', '2.0.5'
 gem 'SystemTimer'
 gem "ruby-debug"
+gem "thin"
 
 group :test, :development do
   gem "rspec-rails", ">= 2.0.0.beta.20"
