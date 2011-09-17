@@ -1,0 +1,15 @@
+The project is located in:
+
+cd /Users/wcr/Projects/windycityrails-dojo-chat-server
+
+To run the server:
+
+bundle exec rails server
+
+Then open your browser to
+
+http://localhost:3000
+
+To pick up projects to work on look at the backlog/icebox in Pivotal Tracker
+
+https://www.pivotaltracker.com/projects/370293
